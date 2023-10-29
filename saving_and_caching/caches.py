@@ -2,22 +2,27 @@ import csv
 import os
 from my_league import my_league
 
-PATH_CACHE = r'cached'
 HEADER_PLAYER = 'Player'
 
 
+def get_path_cache():
+    return 'cached/{}'.format(my_league.BJSS_LEAGUE_ID)
+
+
 def get_league():
-    create_cache_folders_if_necessary()
     return "this is a league"
 
 
 def create_cache_folders_if_necessary():
-    if not os.path.exists(PATH_CACHE):
-        os.makedirs(PATH_CACHE)
+    if not os.path.exists('cached'):
+        os.makedirs('cached')
+    if not os.path.exists(get_path_cache()):
+        os.makedirs(get_path_cache())
 
 
 # def cache_league_objects(teams, players, schedule):
 def cache_league_objects(players):
+    create_cache_folders_if_necessary()
     # TODO: need to clear existing cache first. example: when teams are different from last year
     # TODO: create folders if they do not yet exist
     # for name in teams:
@@ -32,7 +37,7 @@ def cache_league_objects(players):
     #         for matchup in schedule[team_name]:
     #             writer = csv.writer(schedule_file)
     #             writer.writerow([matchup])
-    with open('{}/players.csv'.format(PATH_CACHE), 'w', newline='\n') as players_file:
+    with open('{}/players.csv'.format(get_path_cache()), 'w', newline='\n') as players_file:
         writer = csv.DictWriter(players_file, fieldnames=[HEADER_PLAYER] + my_league.ALL_STATS + [my_league.IR_KEY])
         writer.writeheader()
         for name in players:
