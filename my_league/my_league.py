@@ -14,10 +14,12 @@ def process():
         my_league = caches.get_league()
         all_players_stat_map = caches.get_players()
         rosters = caches.get_teams()
+        schedule = caches.get_schedule()
     else:
         espn_league = league_interactions.get_league_from_espn(BJSS_LEAGUE_ID, YEAR)
         all_players_stat_map = league_interactions.construct_players_stat_map(espn_league)
-        rosters = league_interactions.get_rosters(espn_league)
-        caches.cache_league_objects(rosters, all_players_stat_map)
+        rosters = league_interactions.extract_rosters_from_espn_league(espn_league)
+        schedule = league_interactions.extract_schedules_from_espn_league(espn_league)
+        caches.cache_league_objects(rosters, all_players_stat_map, schedule)
 
     print(caches.get_league())
