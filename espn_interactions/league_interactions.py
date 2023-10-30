@@ -56,7 +56,7 @@ def construct_players_stat_map(league: League):
                 # previously we used previous year's average, but that seems to now be unavailable in the ESPN API
                 projections_not_found.append(stat)
                 all_players_stat_map[player.name][stat] = 0
-        all_players_stat_map[player.name][my_league.IR_KEY] = player.lineupSlot == 'IR'
+        all_players_stat_map[player.name][my_league.KEY_IR] = player.lineupSlot == 'IR'
         if len(projections_not_found) > 0:
             print('{} projections not found: {}'.format(player.name, ', '.join(projections_not_found)))
     return all_players_stat_map

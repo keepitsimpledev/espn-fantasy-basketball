@@ -6,11 +6,7 @@ HEADER_PLAYER = 'Player'
 
 
 def get_path_cache():
-    return 'cached/{}'.format(my_league.BJSS_LEAGUE_ID)
-
-
-def get_league():
-    return "this is a league"
+    return 'cached/{}'.format(my_league.ESPN_LEAGUE_ID)
 
 
 def get_players():
@@ -21,20 +17,20 @@ def get_players():
             all_players[row[HEADER_PLAYER]] = {}
             for stat in my_league.ALL_STATS:
                 all_players[row[HEADER_PLAYER]][stat] = int(float(row[stat]))
-            all_players[row[HEADER_PLAYER]][my_league.IR_KEY] = row[my_league.IR_KEY]
+            all_players[row[HEADER_PLAYER]][my_league.KEY_IR] = row[my_league.KEY_IR]
     return all_players
 
 
 def get_teams():
-    bjss_teams = {}
+    teams = {}
     for (__, __, filenames) in os.walk('./{}/teams/'.format(get_path_cache())):
         for file in filenames:
             team_name = file[0:-4]
-            bjss_teams[team_name] = []
+            teams[team_name] = []
             with open('{}/teams/'.format(get_path_cache()) + file, 'r', newline='\r\n') as team_file:
                 for line in team_file:
-                    bjss_teams[team_name] += [line.rstrip('\r\n')]
-    return bjss_teams
+                    teams[team_name] += [line.rstrip('\r\n')]
+    return teams
 
 
 def get_schedule():
@@ -77,7 +73,7 @@ def cache_league_objects(teams, players, schedule):
                 writer = csv.writer(schedule_file)
                 writer.writerow([matchup])
     with open('{}/players.csv'.format(get_path_cache()), 'w', newline='\n') as players_file:
-        writer = csv.DictWriter(players_file, fieldnames=[HEADER_PLAYER] + my_league.ALL_STATS + [my_league.IR_KEY])
+        writer = csv.DictWriter(players_file, fieldnames=[HEADER_PLAYER] + my_league.ALL_STATS + [my_league.KEY_IR])
         writer.writeheader()
         for name in players:
             players[name][HEADER_PLAYER] = name

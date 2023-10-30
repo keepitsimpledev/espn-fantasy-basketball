@@ -4,4 +4,3 @@ from my_league import my_league
 
 if __name__ == '__main__':
     my_league.process()
-    print('end')
