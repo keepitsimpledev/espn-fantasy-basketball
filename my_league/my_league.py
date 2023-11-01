@@ -1,7 +1,6 @@
 from saving_and_caching import caches
 from espn_interactions import league_interactions
-from my_league import calculations
-from my_league import results
+from my_league import calculations, results, transactions
 
 ESPN_LEAGUE_ID = 1192749948
 YEAR = 2024  # 2024 is 2023-2024 season
@@ -17,6 +16,26 @@ LOAD_FROM_CACHE = True
 
 
 def process():
+    [teams, all_players_stat_map] = load()
+
+    process_transactions(teams, all_players_stat_map)
+
+    calculations.calculate_team_stats(teams, all_players_stat_map)
+    calculations.simulate_season(teams)
+    results.stats_and_results_to_csv(teams)
+
+    print('processing complete')
+
+
+def process_transactions(teams, all_players):
+    transactions.drop('Al Horford', teams)
+    transactions.add('Cedi Osman', 'Flint Tropics (ELE)', all_players, teams)
+    transactions.trade(['Nikola Jokic'],
+                       ['Joel Embiid'],
+                       teams)
+
+
+def load():
     if LOAD_FROM_CACHE:
         all_players_stat_map = caches.get_players()
         teams = caches.get_teams()
@@ -30,12 +49,7 @@ def process():
 
     combine_team_info(teams, schedule)
 
-    calculations.calculate_team_stats(teams, all_players_stat_map)
-    calculations.simulate_season(teams)
-
-    results.stats_and_results_to_csv(teams)
-
-    print('processing complete')
+    return [teams, all_players_stat_map]
 
 
 def combine_team_info(teams, schedule):
