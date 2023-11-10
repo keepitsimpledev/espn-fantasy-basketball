@@ -2,8 +2,20 @@ from saving_and_caching import caches
 from espn_interactions import league_interactions
 from my_league import calculations, results, transactions
 
+# replace with your ESPN league ID:
 ESPN_LEAGUE_ID = 1192749948
+
+# TODO: cache projects, total, and last 7, and change filename
+ESPN_PROJECTIONS_KEY = '2024_projected'
+ESPN_TOTAL_KEY = '2024_total'
+ESPN_LAST_7_KEY = '2024_last_7'
+ESPN_STATS_KEY = ESPN_PROJECTIONS_KEY
+
+LOAD_FROM_CACHE = True
+
 YEAR = 2024  # 2024 is 2023-2024 season
+
+
 ALL_STATS = ['FGM', 'FGA', 'FTM', 'FTA', '3PTM', 'REB', 'AST', 'STL', 'BLK', 'TO', 'PTS']
 NINE_CATEGORIES = ['FG%', 'FT%', '3PTM', 'REB', 'AST', 'STL', 'BLK', 'TO', 'PTS']
 KEY_IR = 'On IR'
@@ -12,7 +24,6 @@ KEY_STATS = 'stats'
 KEY_WINS = 'wins'
 KEY_LOSSES = 'losses'
 KEY_TIES = 'ties'
-LOAD_FROM_CACHE = True
 
 
 def process():
@@ -28,11 +39,13 @@ def process():
 
 
 def process_transactions(teams, all_players):
-    transactions.drop('Al Horford', teams)
-    transactions.add('Cedi Osman', 'Flint Tropics (ELE)', all_players, teams)
-    transactions.trade(['Nikola Jokic'],
-                       ['Joel Embiid'],
-                       teams)
+    # sample transactions:
+    # transactions.drop('Al Horford', teams)
+    # transactions.add('Cedi Osman', 'Flint Tropics (ELE)', all_players, teams)
+    # transactions.trade(['Nikola Jokic'],
+    #                    ['Joel Embiid'],
+    #                    teams)
+    print('transactions processed')
 
 
 def load():

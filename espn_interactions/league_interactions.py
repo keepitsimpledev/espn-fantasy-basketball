@@ -1,8 +1,6 @@
 from espn_api.basketball import League, Team, Matchup
 from my_league import my_league
 
-PROJECTIONS_KEY = '2024_projected'
-
 
 def get_league_from_espn(league_id, year):
     return League(league_id, year)
@@ -49,8 +47,10 @@ def construct_players_stat_map(league: League):
         all_players_stat_map[player.name] = {}
         projections_not_found = []
         for stat in my_league.ALL_STATS:
-            if PROJECTIONS_KEY in player.stats and 'total' in player.stats[PROJECTIONS_KEY] and stat in player.stats[PROJECTIONS_KEY]['total']:
-                value = player.stats[PROJECTIONS_KEY]['total'][stat]
+            if my_league.ESPN_STATS_KEY in player.stats \
+                    and 'total' in player.stats[my_league.ESPN_STATS_KEY] \
+                    and stat in player.stats[my_league.ESPN_STATS_KEY]['total']:
+                value = player.stats[my_league.ESPN_STATS_KEY]['total'][stat]
                 all_players_stat_map[player.name][stat] = int(value)
             else:
                 # previously we used previous year's average, but that seems to now be unavailable in the ESPN API
