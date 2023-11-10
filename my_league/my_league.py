@@ -3,7 +3,7 @@ from espn_interactions import league_interactions
 from my_league import calculations, results, transactions
 
 # replace with your ESPN league ID:
-ESPN_LEAGUE_ID = 1192749948
+ESPN_LEAGUE_ID = 290350916
 
 # TODO: cache projects, total, and last 7, and change filename
 ESPN_PROJECTIONS_KEY = '2024_projected'
