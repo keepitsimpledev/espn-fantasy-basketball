@@ -36,11 +36,11 @@ def calculate_team_stats(teams, all_players):
                         sorted_team_stats[nine_cat_stat].append(stat_and_team)
     print(my_league.MY_TEAM + ' stat rankings:')
     for nine_cat_stat in my_league.NINE_CATEGORIES:
-        for rank in range(10):
+        for rank in range(len(teams)):
             if sorted_team_stats[nine_cat_stat][rank][1] == my_league.MY_TEAM:
                 print('{} : {}'.format(nine_cat_stat, rank + 1))
                 break
-            elif rank + 1 == 10:
+            elif rank + 1 == len(teams):
                 print('not found: {} {}'.format(my_league.MY_TEAM, nine_cat_stat))
 
 
