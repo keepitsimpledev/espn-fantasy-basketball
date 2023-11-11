@@ -17,6 +17,8 @@ def stats_and_results_to_csv(teams):
             entry['Standing'] = rank
             rank += 1
             writer.writerow(entry)
+            if entry['Team Name'] == my_league.MY_TEAM:
+                print('{}) {} {}'.format(rank, entry['Team Name'], entry['Record']))
 
 
 def sort_by_record(teams_list):

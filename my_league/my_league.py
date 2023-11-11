@@ -5,6 +5,7 @@ from my_league import calculations, results, transactions
 
 # replace with your ESPN league ID:
 ESPN_LEAGUE_ID = 290350916
+MY_TEAM = 'Big Baller Brand (BBb)'
 
 # TODO: cache projects, total, and last 7, and change filename
 ESPN_PROJECTIONS_KEY = '2024_projected'

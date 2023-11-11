@@ -61,13 +61,13 @@ def init_cache_folders():
 def cache_league_objects(teams, players, schedule):
     init_cache_folders()
     for name in teams:
-        safe_name = name.replace('?', '')
+        safe_name = name.replace('?', '').replace('⭐', '')
         with open('{}/teams/{}.csv'.format(get_path_cache(), safe_name), 'w', newline='\n') as team_file:
             for player in teams[name]:
                 writer = csv.writer(team_file)
                 writer.writerow([player])
     for team_name in schedule:
-        safe_name = team_name.replace('?', '')
+        safe_name = team_name.replace('?', '').replace('⭐', '')
         with open('{}/schedules/{}.csv'.format(get_path_cache(), safe_name), 'w', newline='\n') as schedule_file:
             for matchup in schedule[team_name]:
                 writer = csv.writer(schedule_file)

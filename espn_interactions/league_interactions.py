@@ -16,7 +16,7 @@ def extract_schedules_from_espn_league(league: League):
             home_team_name = get_formatted_name_from_espn_team_object(week.home_team)
             away_team_name = get_formatted_name_from_espn_team_object(week.away_team)
             opponent = home_team_name if team_name == away_team_name else away_team_name
-            schedules[team_name] += [opponent.replace('?', '')]
+            schedules[team_name] += [opponent.replace('?', '').replace('⭐', '')]
     return schedules
 
 
@@ -63,4 +63,4 @@ def construct_players_stat_map(league: League):
 
 
 def get_formatted_name_from_espn_team_object(espn_team: Team):
-    return '{} ({})'.format(espn_team.team_name, espn_team.team_abbrev).replace('?', '')
+    return '{} ({})'.format(espn_team.team_name, espn_team.team_abbrev).replace('?', '').replace('⭐', '')
