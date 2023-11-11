@@ -1,5 +1,6 @@
 from saving_and_caching import caches
 from espn_interactions import league_interactions
+from hashtagbasketball import copied_from_website
 from my_league import calculations, results, transactions
 
 # replace with your ESPN league ID:
@@ -10,8 +11,9 @@ ESPN_PROJECTIONS_KEY = '2024_projected'
 ESPN_TOTAL_KEY = '2024_total'
 ESPN_LAST_7_KEY = '2024_last_7'
 ESPN_STATS_KEY = ESPN_PROJECTIONS_KEY
+USE_HASHTAG = False
 
-LOAD_FROM_CACHE = True
+LOAD_FROM_CACHE = False
 
 YEAR = 2024  # 2024 is 2023-2024 season
 
@@ -59,6 +61,15 @@ def load():
         teams = league_interactions.extract_rosters_from_espn_league(espn_league)
         schedule = league_interactions.extract_schedules_from_espn_league(espn_league)
         caches.cache_league_objects(teams, all_players_stat_map, schedule)
+
+    if USE_HASHTAG:
+        hashtag_players_stat_map = copied_from_website.get_stats()
+        for hashtag_player in hashtag_players_stat_map:
+            if hashtag_player in all_players_stat_map:
+                hashtag_players_stat_map[hashtag_player][KEY_IR] = all_players_stat_map[hashtag_player][KEY_IR]
+            else:
+                print('player not found: ' + hashtag_player)
+        all_players_stat_map = hashtag_players_stat_map
 
     combine_team_info(teams, schedule)
 

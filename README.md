@@ -7,7 +7,8 @@ this repository can be used to simulate the results of an ESPN fantasy basketbal
 
 # usage
 * replace the my_league.ESPN_LEAGUE_ID with your ESPN League ID
-* update my_league.ESPN_STATS_KEY to choose what statistics to use during season simulation
+* update my_league.ESPN_STATS_KEY to choose what statistics to use during season simulation 
+* update my_league.USE_HASHTAG to True to use the local statistics from hashtag 
 * update my_league.LOAD_FROM_CACHE to choose between using previously cached data or reload
 * update my_league.YEAR to the value representing the current season
 * execute `main.py` to simulate the season - the output is a `.csv` in the root folder
