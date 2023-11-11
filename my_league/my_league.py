@@ -63,13 +63,7 @@ def load():
         caches.cache_league_objects(teams, all_players_stat_map, schedule)
 
     if USE_HASHTAG:
-        hashtag_players_stat_map = copied_from_website.get_stats()
-        for hashtag_player in hashtag_players_stat_map:
-            if hashtag_player in all_players_stat_map:
-                hashtag_players_stat_map[hashtag_player][KEY_IR] = all_players_stat_map[hashtag_player][KEY_IR]
-            else:
-                print('player not found: ' + hashtag_player)
-        all_players_stat_map = hashtag_players_stat_map
+        all_players_stat_map = get_player_stat_map_from_hashtag(all_players_stat_map)
 
     combine_team_info(teams, schedule)
 
@@ -80,3 +74,13 @@ def combine_team_info(teams, schedule):
     for team_name in teams:
         teams[team_name] = {KEY_ROSTER: teams[team_name]}
         teams[team_name]['schedule'] = schedule[team_name]
+
+
+def get_player_stat_map_from_hashtag(all_players_stat_map):
+    hashtag_players_stat_map = copied_from_website.get_stats()
+    for hashtag_player in hashtag_players_stat_map:
+        if hashtag_player in all_players_stat_map:
+            hashtag_players_stat_map[hashtag_player][KEY_IR] = all_players_stat_map[hashtag_player][KEY_IR]
+        else:
+            print('player not found: ' + hashtag_player)
+    return hashtag_players_stat_map
