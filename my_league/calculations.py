@@ -1,4 +1,4 @@
-from my_league import my_league
+from my_league import my_league, transactions
 
 
 def calculate_team_stats(teams, all_players):
@@ -9,6 +9,8 @@ def calculate_team_stats(teams, all_players):
         for stat in my_league.ALL_STATS:
             team_stats[stat] = 0
         for player in teams[team][my_league.KEY_ROSTER]:
+            if player not in all_players or my_league.KEY_IR not in all_players[player]:
+                continue # TODO check why this is necessary
             if all_players[player][my_league.KEY_IR] == 'True':
                 continue
             for stat in my_league.ALL_STATS:

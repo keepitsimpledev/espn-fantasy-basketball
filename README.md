@@ -14,7 +14,7 @@ this repository can be used to simulate the results of an ESPN fantasy basketbal
 * execute `main.py` to simulate the season - the output is a `.csv` in the root folder
 
 # set-up
-1. using PyCharm, changed interpreter to `pipenv` by clicking the "current interpreter" menu/indicator in the bottom-right
+1. using PyCharm, change interpreter to `pipenv` by clicking the "current interpreter" menu/indicator in the bottom-right
 2. installed [espn_api](https://pypi.org/project/espn-api/) with `pipenv install espn_api`
 
 # references:

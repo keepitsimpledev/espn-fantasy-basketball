@@ -15,10 +15,10 @@ def stats_and_results_to_csv(teams):
             entry['Team Name'] = name_and_data[0]
             entry['Record'] = '{}-{}-{}'.format(team[my_league.KEY_WINS], team[my_league.KEY_LOSSES], team[my_league.KEY_TIES])
             entry['Standing'] = rank
-            rank += 1
             writer.writerow(entry)
             if entry['Team Name'] == my_league.MY_TEAM:
                 print('{}) {} {}'.format(rank, entry['Team Name'], entry['Record']))
+            rank += 1
 
 
 def sort_by_record(teams_list):

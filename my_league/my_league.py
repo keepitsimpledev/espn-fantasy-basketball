@@ -36,6 +36,9 @@ def process():
 
     calculations.calculate_team_stats(teams, all_players_stat_map)
     calculations.simulate_season(teams)
+
+    # calculations.find_fa_upgrades(teams, all_players_stat_map)
+
     results.stats_and_results_to_csv(teams)
 
     print('processing complete')
@@ -48,6 +51,7 @@ def process_transactions(teams, all_players):
     # transactions.trade(['Nikola Jokic'],
     #                    ['Joel Embiid'],
     #                    teams)
+    # TODO: add check to confirm no teams have more than 13 players
     print('transactions processed')
 
 
