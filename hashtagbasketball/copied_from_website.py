@@ -43,9 +43,9 @@ def to_espn_name(hashtag_name):
         return "O.G. Anunoby"
     elif hashtag_name == 'Nicolas Claxton':
         return 'Nic Claxton'
-    elif hashtag_name == 'Alperen Sengn':
+    elif hashtag_name == 'Alperen Sengn' or hashtag_name == 'Alperen Sengün':
         return 'Alperen Sengun'
-    elif hashtag_name == 'Dennis Schr”der':
+    elif hashtag_name == 'Dennis Schr”der' or hashtag_name == 'Dennis Schröder':
         return 'Dennis Schroder'
     elif hashtag_name == 'Xavier Tillman Sr.':
         return 'Xavier Tillman'
@@ -53,9 +53,9 @@ def to_espn_name(hashtag_name):
         return 'Reggie Bullock Jr.'
     elif hashtag_name == 'Aleksandar Vezenkov':
         return 'Sasha Vezenkov'
-    elif hashtag_name == 'Th‚o Maledon':
+    elif hashtag_name == 'Th‚o Maledon' or hashtag_name == 'Théo Maledon':
         return 'Theo Maledon'
-    elif hashtag_name == '™mer Yurtseven':
+    elif hashtag_name == '™mer Yurtseven' or hashtag_name == 'Ömer Yurtseven':
         return 'Omer Yurtseven'
     elif hashtag_name == 'Patrick Baldwin Jr.':
         return 'Patrick Baldwin'

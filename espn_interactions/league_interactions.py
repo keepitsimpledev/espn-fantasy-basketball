@@ -35,7 +35,7 @@ def extract_all_players_from_espn_league(league: League):
     all_players = []
     for team in league.teams:
         all_players += team.roster
-    free_agents = league.free_agents(size=500)
+    free_agents = league.free_agents(size=1000)
     all_players += free_agents
     return all_players
 

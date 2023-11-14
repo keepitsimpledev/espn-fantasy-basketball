@@ -2,3 +2,4 @@
 cached
 *.csv
 *.xlsx
+!copied.csv

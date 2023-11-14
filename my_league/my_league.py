@@ -3,16 +3,21 @@ from espn_interactions import league_interactions
 from hashtagbasketball import copied_from_website
 from my_league import calculations, results, transactions
 
+BJSS_LEAGUE_ID = 1192749948
+BJSS_LEAGUE_TEAM = 'Flint Tropics (ELE)'
+TASD_LEAGUE_ID = 917926052
+TASD_LEAGUE_TEAM = 'Timo Cruz (TIMO)'
+
 # replace with your ESPN league ID:
-ESPN_LEAGUE_ID = 290350916
-MY_TEAM = 'Big Baller Brand (BBb)'
+ESPN_LEAGUE_ID = TASD_LEAGUE_ID
+MY_TEAM = TASD_LEAGUE_TEAM
 
 # TODO: cache projects, total, and last 7, and change filename
 ESPN_PROJECTIONS_KEY = '2024_projected'
 ESPN_TOTAL_KEY = '2024_total'
 ESPN_LAST_7_KEY = '2024_last_7'
 ESPN_STATS_KEY = ESPN_PROJECTIONS_KEY
-USE_HASHTAG = False
+USE_HASHTAG = True
 
 LOAD_FROM_CACHE = False
 
@@ -87,5 +92,5 @@ def get_player_stat_map_from_hashtag(all_players_stat_map):
         if hashtag_player in all_players_stat_map:
             hashtag_players_stat_map[hashtag_player][KEY_IR] = all_players_stat_map[hashtag_player][KEY_IR]
         else:
-            print('player not found: ' + hashtag_player)
+            print('player not found in ESPN: ' + hashtag_player)
     return hashtag_players_stat_map
