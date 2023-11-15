@@ -17,7 +17,7 @@ def stats_and_results_to_csv(teams):
             entry['Standing'] = rank
             writer.writerow(entry)
             if entry['Team Name'] == my_league.MY_TEAM:
-                print('{}) {} {}'.format(rank, entry['Team Name'], entry['Record']))
+                print('{} projected rank: {} record: {}'.format(entry['Team Name'], rank, entry['Record']))
             rank += 1
 
 

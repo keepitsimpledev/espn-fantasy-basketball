@@ -3,14 +3,8 @@ from espn_interactions import league_interactions
 from hashtagbasketball import copied_from_website
 from my_league import calculations, results, transactions
 
-BJSS_LEAGUE_ID = 1192749948
-BJSS_LEAGUE_TEAM = 'Flint Tropics (ELE)'
-TASD_LEAGUE_ID = 917926052
-TASD_LEAGUE_TEAM = 'Timo Cruz (TIMO)'
-
-# replace with your ESPN league ID:
-ESPN_LEAGUE_ID = TASD_LEAGUE_ID
-MY_TEAM = TASD_LEAGUE_TEAM
+ESPN_LEAGUE_ID = 290350916
+MY_TEAM = 'Big Baller Brand (BBb)'
 
 # TODO: cache projects, total, and last 7, and change filename
 ESPN_PROJECTIONS_KEY = '2024_projected'
@@ -41,6 +35,7 @@ def process():
 
     calculations.calculate_team_stats(teams, all_players_stat_map)
     calculations.simulate_season(teams)
+    calculations.print_stats_summary(teams)
 
     # calculations.find_fa_upgrades(teams, all_players_stat_map)
 
