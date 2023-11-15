@@ -38,3 +38,30 @@ def simulate_season(teams):
         teams[team_name][my_league.KEY_WINS] = wins
         teams[team_name][my_league.KEY_LOSSES] = losses
         teams[team_name][my_league.KEY_TIES] = ties
+
+
+def print_stats_summary(teams):
+    sorted_team_stats = {}
+    for team in teams:
+        for nine_cat_stat in my_league.NINE_CATEGORIES:
+            if nine_cat_stat not in sorted_team_stats:
+                sorted_team_stats[nine_cat_stat] = []
+            stat_list_length = len(sorted_team_stats[nine_cat_stat])
+            stat_and_team = [teams[team][my_league.KEY_STATS][nine_cat_stat], team]
+            if stat_list_length == 0:
+                sorted_team_stats[nine_cat_stat].append(stat_and_team)
+            else:
+                for index in range(stat_list_length):
+                    if teams[team][my_league.KEY_STATS][nine_cat_stat] > sorted_team_stats[nine_cat_stat][index][0]:
+                        sorted_team_stats[nine_cat_stat].insert(index, stat_and_team)
+                        break
+                    elif index + 1 == stat_list_length:
+                        sorted_team_stats[nine_cat_stat].append(stat_and_team)
+    print(my_league.MY_TEAM + ' stat rankings:')
+    for nine_cat_stat in my_league.NINE_CATEGORIES:
+        for rank in range(len(teams)):
+            if sorted_team_stats[nine_cat_stat][rank][1] == my_league.MY_TEAM:
+                print('{} : {}'.format(nine_cat_stat, rank + 1))
+                break
+            elif rank + 1 == len(teams):
+                print('not found: {} {}'.format(my_league.MY_TEAM, nine_cat_stat))
