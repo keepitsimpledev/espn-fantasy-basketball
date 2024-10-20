@@ -18,7 +18,7 @@ def get_stats():
                 'FGA': float(fga),
                 'FTM': float(ftm),
                 'FTA': float(fta),
-                '3PTM': float(row['3PM']),
+                '3PM': float(row['3PM']),
                 'REB': float(row['TREB']),
                 'AST': float(row['AST']),
                 'STL': float(row['STL']),
@@ -39,9 +39,7 @@ def percent_to_made_and_total(percent):
 
 
 def to_espn_name(hashtag_name):
-    if hashtag_name == 'OG Anunoby':
-        return "O.G. Anunoby"
-    elif hashtag_name == 'Nicolas Claxton':
+    if hashtag_name == 'Nicolas Claxton':
         return 'Nic Claxton'
     elif hashtag_name == 'Alperen Sengn' or hashtag_name == 'Alperen Sengün':
         return 'Alperen Sengun'
@@ -63,4 +61,6 @@ def to_espn_name(hashtag_name):
         return 'Andre Jackson Jr.'
     elif hashtag_name == 'EJ Liddell':
         return 'E.J. Liddell'
+    elif hashtag_name == 'Alexandre Sarr':
+        return 'Alex Sarr'
     return hashtag_name
