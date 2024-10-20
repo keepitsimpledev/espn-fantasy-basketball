@@ -18,8 +18,8 @@ LOAD_FROM_CACHE = False
 YEAR = 2024  # 2024 is 2023-2024 season
 
 
-ALL_STATS = ['FGM', 'FGA', 'FTM', 'FTA', '3PTM', 'REB', 'AST', 'STL', 'BLK', 'TO', 'PTS']
-NINE_CATEGORIES = ['FG%', 'FT%', '3PTM', 'REB', 'AST', 'STL', 'BLK', 'TO', 'PTS']
+ALL_STATS = ['FGM', 'FGA', 'FTM', 'FTA', '3PM', 'REB', 'AST', 'STL', 'BLK', 'TO', 'PTS']
+NINE_CATEGORIES = ['FG%', 'FT%', '3PM', 'REB', 'AST', 'STL', 'BLK', 'TO', 'PTS']
 KEY_IR = 'On IR'
 KEY_ROSTER = 'roster'
 KEY_STATS = 'stats'
